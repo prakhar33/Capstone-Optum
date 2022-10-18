@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 
-	@Query("SELECT d.password from Doctor d WHERE d.name =:n")
+	@Query("SELECT d.password from Doctor d WHERE d.mobileNumber =:n")
 	public String getByUsername(@Param("n") String name);
 	
 	@Modifying

@@ -5,6 +5,7 @@ import {useNavigate } from 'react-router-dom';
 const HospitalSignUpComponent=()=>{
       const [hospital_name , sethospitalname] = useState('');
       const [city , setcity] = useState('');
+      const [mobileNumber , setmobileNumber] = useState('');
       const [password , setpassword] = useState('');
       const [confirmpassword, setconfirmpassword] = useState('');
       //console.log(startTime);
@@ -15,6 +16,9 @@ const HospitalSignUpComponent=()=>{
     const handlecity=(e)=> {
         setcity(e.target.value)
     }
+    const handlemobileNumber=(e)=> {
+      setmobileNumber(e.target.value)
+  }
     const handlepassword=(e)=> {
         setpassword(e.target.value)
     }
@@ -35,6 +39,7 @@ const HospitalSignUpComponent=()=>{
         axios.post('http://127.0.0.1:9090/hospital/signup', {
         hospital_name: hospital_name,
         city: city,
+        mobileNumber: mobileNumber,
         password: password
       })
       .then((res) => {
@@ -69,6 +74,14 @@ onSubmit={(e)=>{handleSubmit(e)}}>
     <div class="input-group">
       <div class="input-group-text"><i class="fa fa-home"></i> </div>
       <input type="text" class="form-control" id="city" placeholder="City" required value={city} onChange={(e)=>{handlecity(e)}} />
+    </div>
+  </div>
+
+  <div class="col-12">
+    <label class="visually-hidden" for="inlineFormInputGroupUsername">Mobile Number</label>
+    <div class="input-group">
+      <div class="input-group-text"><i class="fa fa-mobile"></i> </div>
+      <input type="text" class="form-control" id="city" placeholder="Mobile Number" required value={mobileNumber} onChange={(e)=>{handlemobileNumber(e)}} />
     </div>
   </div>
 

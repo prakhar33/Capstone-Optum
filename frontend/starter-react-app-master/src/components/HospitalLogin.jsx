@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import axios from "axios";
 import signupimage from '../images/doctor_signup.png'
 import {useNavigate } from 'react-router-dom';
-const DoctorLoginComponent=(props)=>{
+const HospitalLoginComponent=(props)=>{
       const [mciRegistrationNumber , setmciRegistrationNumber] = useState('');
       const [password , setpassword] = useState('');
       
@@ -20,7 +20,7 @@ const DoctorLoginComponent=(props)=>{
     
     const handleSubmit=(e)=> {
         const axios = require('axios').default;
-        axios.post('http://127.0.0.1:9090/doctor/login', {
+        axios.post('http://127.0.0.1:9090/hospital/login', {
         username: mciRegistrationNumber,
         password: password
       })
@@ -28,7 +28,7 @@ const DoctorLoginComponent=(props)=>{
         if(res.data==="Login Successful"){
                   
           console.log(res.data);
-          props.handle(mciRegistrationNumber);
+          
           
         }
         else{
@@ -91,5 +91,4 @@ onSubmit={(e)=>{handleSubmit(e)}}>
       );
     
       }
-export default DoctorLoginComponent;
-
+export default HospitalLoginComponent;

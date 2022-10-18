@@ -1,49 +1,68 @@
 import React,{useEffect, useState} from "react";
 import { ReactDOM } from "react";
 import axios from "axios";
-import {Navigate } from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
 import AdminLoginComponent from "./AdminLoginComponent";
 import {BrowserRouter as Router, Route, Routes, Switch} from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 //import ListDoctorComponent from "./ListDoctorComponent";
 import 'bootstrap/dist/css/bootstrap.min.css'
-const BookAppointmentComponent=()=>{
+
+
+
+const SearchByHospitalComponent=()=>{
       const [specialization , setspecialization] = useState('');
       const [doc , setDoc] = useState('');
-      const [fetcheddoctors , setfetcheddoctors] = useState([]);
-      const [flag, setFlag]= useState(false);
       const [selecteddate, setStartDate] = useState(new Date());
       const [selectedslot, setselectedslot] = useState(0);
-      const [fetched,setfetched]=useState(false);
-      const [fetchedslotofdoctors , setfetchedslotofdoctors] = useState([]);
-        
+
+      const [fetchedhospitals , setfetchedhospitals] = useState([]);
+      const [selectedhospital, setselectedhospital] = useState();
+      const [fetcheddoctors , setfetcheddoctors] = useState([]);
+
+    //   const navigate=useNavigate();
     const handleSpecialization=(e)=> {
         setspecialization(e.target.value)
     }
-
+    
+    
+    useEffect(()=>{
+        const axios = require('axios').default;
+        //alert("Hi");
+        axios.get('http://localhost:9090/hospital/getAll')
+      .then((res) => {
+          console.log("hello");
+         setfetchedhospitals(res.data);
+                  
+      })
+      .catch((err) => {
+          console.log(err);
+      });
+    },[]);
     const handleSlot=(slot)=> {
         setselectedslot(slot)
     }
-   
-    
-
+    console.log(fetchedhospitals);
+    //selectedslot=parseInt(selectedslot);
+    console.log("selected slot",selectedslot);
+    console.log("selected Date",selecteddate);
     let datetosend="";
     datetosend=selecteddate.getDate().toString()+"-"+(selecteddate.getMonth()+1).toString()+"-"+selecteddate.getFullYear().toString(); 
+    console.log("date",typeof(datetosend));
+    console.log("slot",typeof(selectedslot));
+    console.log("Selected Hospital",selectedhospital);
+    // console.log("did",typeof(doc.doctor_id));
+    // console.log("pid",typeof(5));
+    // console.log("hname",typeof(doc.hospitalName));
+    // console.log("citytype",typeof(doc.city));
+    // console.log("date",datetosend);
+    //console.log(Object.keys(selecteddate));
 
-    
-    // const getUsers = async (selected_doctor_index) => {
-    //     console.log(2);
-    //     // const obj = fetcheddoctors[selected_doctor_index];
-    //     let res = await axios.get(
-    //         'http://localhost:9090/appointment/getslotbydate/'+datetosend+"/"+5
-    //         )
-    //         setfetchedslotofdoctors(res.data);
-    //         console.log(3);
-    // };
+
 
     function onBook(selected_doctor_index){
-       const currentDoctorId = fetcheddoctors[selected_doctor_index].doctor_id;
+        const currentDoctorId = fetcheddoctors[selected_doctor_index].doctor_id;
         const axios = require('axios').default;
         axios.get(
             'http://localhost:9090/appointment/getslotbydate/'+datetosend+"/"+currentDoctorId
@@ -85,54 +104,11 @@ const BookAppointmentComponent=()=>{
       .catch((err) => {
           console.log(err);
       });
-    
-        
-    } 
-
-    // useEffect(() => {
-    //     for(let i=0;i<fetchedslotofdoctors.length;i++)
-    //       {
-            
-    //         // console.log("dfd",doc);
-
-    //           if(fetchedslotofdoctors[i]===1) doc.slot_1=2;
-    //           if(fetchedslotofdoctors[i]===2) doc.slot_2=2;
-    //           if(fetchedslotofdoctors[i]===3) doc.slot_3=2;
-    //           if(fetchedslotofdoctors[i]===4) doc.slot_4=2;
-    //           if(fetchedslotofdoctors[i]===5) doc.slot_5=2;
-    //           if(fetchedslotofdoctors[i]===6) doc.slot_6=2;
-    //           if(fetchedslotofdoctors[i]===7) doc.slot_7=2;
-    //           if(fetchedslotofdoctors[i]===8) doc.slot_8=2;
-    //           if(fetchedslotofdoctors[i]===9) doc.slot_9=2;
-    //           if(fetchedslotofdoctors[i]===10) doc.slot_10=2;
-    //           if(fetchedslotofdoctors[i]===11) doc.slot_11=2;
-    //           if(fetchedslotofdoctors[i]===12) doc.slot_12=2;
-    //           if(fetchedslotofdoctors[i]===13) doc.slot_13=2;
-    //           if(fetchedslotofdoctors[i]===14) doc.slot_14=2;
-    //           if(fetchedslotofdoctors[i]===15) doc.slot_15=2;
-    //           if(fetchedslotofdoctors[i]===16) doc.slot_16=2;
-    //           if(fetchedslotofdoctors[i]===17) doc.slot_17=2;
-    //           if(fetchedslotofdoctors[i]===18) doc.slot_18=2;
-    //           if(fetchedslotofdoctors[i]===19) doc.slot_19=2;
-    //           if(fetchedslotofdoctors[i]===20) doc.slot_20=2;
-    //       }
-         
-    //     //   console.log("after",doc);
-    //       console.log(4);
-    //     //   setfetched(true);
-    // }, [,doc,fetchedslotofdoctors]);
- 
-    
-        
-        
-        
-        
-    
-   
+    }
     
     const confirmAppointment=(e)=> {
         const axios = require('axios').default;
-        //console.log(specialization);
+        //alert("Hi");
         axios.post(
             'http://localhost:9090/patient/Book',
             {
@@ -146,7 +122,7 @@ const BookAppointmentComponent=()=>{
             
             )
       .then((res) => {
-        //   console.log("hell");
+          console.log("hello");
           //setfetcheddoctors(res.data);
           //console.log(fetcheddoctors[0]);
       })
@@ -156,8 +132,6 @@ const BookAppointmentComponent=()=>{
       //e.preventDefault();
     }
 
- 
-
     function Availabity() {
         // console.log(fetcheddoctors);
         // console.log(selected_doctor_index);
@@ -166,7 +140,7 @@ const BookAppointmentComponent=()=>{
         if(!doc){
             return null;
         }
-        console.log("latest", doc);
+        else{
         return(
             <div>
                 {/* <h2>{props.fetcheddoctors}</h2> */}
@@ -209,7 +183,8 @@ const BookAppointmentComponent=()=>{
                 
                 <button style={{marginTop:"20px"}} class="btn btn-primary" onClick={confirmAppointment}>Confirm Appointment</button>
             </div>
-         ); 
+         );
+       }
       }
 
     function RenderingArrayOfObjects(){
@@ -239,6 +214,7 @@ const BookAppointmentComponent=()=>{
              }
          )
          return(
+            
              <div>
                  <DatePicker dateFormat="dd MMMM, yyyy" selected={selecteddate} onChange={(date:Date) => setStartDate(date)} />
                  <table className="table table-striped table-light" style={{border:"3px solid gray",marginTop:"20px"}}>
@@ -259,23 +235,24 @@ const BookAppointmentComponent=()=>{
                  </table>      
                  
              </div>
+             
+  
          )
      
         }
          else{
            return (
-               <h3>Sorry..!, No doctors available with selected Specialization</h3>
+               <h3>Sorry, No doctors available with selected Specialization</h3>
            )
          }
        }
-    // const navigate=useNavigate();
+    
     const handleSubmit=(e)=> {
-        e.preventDefault();
-        //setFlag(true);
+        
         const axios = require('axios').default;
         //console.log(specialization);
         axios.post(
-            'http://localhost:9090/doctor/getBySpecial/'+specialization, )
+            'http://localhost:9090/doctor/getByHosp/'+selectedhospital, )
       .then((res) => {
           //console.log("hello");
           setfetcheddoctors(res.data);
@@ -284,30 +261,34 @@ const BookAppointmentComponent=()=>{
       .catch((err) => {
           console.log(err);
       });
-     
+      e.preventDefault();
     }
     
       return (
           <div>
-              {localStorage.getItem("Plogin")==='1' ?
-          
+          {localStorage.getItem("Plogin")==='1' ?
     <div id="formdiv">
         <form id="doctorRegistrationform" class="row row-cols-lg-12 g-3 align-items-center" style={{width:"40%",marginTop: "100px",backgroundColor:"black",borderRadius:"20px 0px 20px 0px", boxShadow:"8px 12px 10px 5px grey",padding:"8px"}}
         onSubmit={(e)=>{handleSubmit(e)}}>
+            <h2 style={{color:"white"}}>Book Appointment with Particular Hospital</h2>
+
 
         <div class="col-12">
             <label class="visually-hidden" for="inlineFormSelectPref">Specialization</label>
-            <select class="form-select" id="inlineFormSelectPref" required value={specialization} onChange={(e)=>{handleSpecialization(e)}}>
-            <option value="" selected disabled>Select Specialization of a doctor you want to visit</option>
-            <option value="Orthopedic">Orthopedic</option>
-            <option value="Cardiologist">Cardiologist</option>
-            <option value="Paediatrician">Paediatrician</option>
-            <option value="Neurosurgeon">Neurosurgeon</option>
-            <option value="Gynecologist">Gynecologist</option>
-            </select>
+                <select class="form-select" id="inlineFormSelectPref" onChange={(e) => setselectedhospital(e.target.value)}>
+                    {
+                        fetchedhospitals.map((hospital) => {
+                            
+                            return <option value={hospital.hospital_name}>{hospital.hospital_name}</option>;
+                        })
+                    }
+                </select>
         </div>
+
+           
+        
         <div class="col-12">
-            <button type="submit" class="btn btn-primary" >Get Doctors with selected Specialization</button>
+            <button type="submit" class="btn btn-primary" >Get Doctors of {selectedhospital} hospital</button>
             </div>
         </form>
            <div style={{marginTop:"40px"}}>
@@ -316,16 +297,15 @@ const BookAppointmentComponent=()=>{
             <div style={{marginTop:"40px"}}>
          <Availabity />
             </div>
-            
-
+          
+                    
             
         </div>:<Navigate replace to="/patient/login"></Navigate> 
-        }
-
+}
         </div>
-
       );
+    
+}
 
-      }
-export default BookAppointmentComponent;
+export default SearchByHospitalComponent;
 

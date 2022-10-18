@@ -10,6 +10,8 @@ import HospitalSignUpComponent from './components/HospitalSignUpComponent';
 import AdminLoginComponent from './components/AdminLoginComponent';
 import PatientLoginComponent from './components/PatientLoginComponent';
 import BookAppointmentComponent from './components/BookAppointmentComponent';
+import SearchByHospitalComponent from './components/SearchByHospitalComponent';
+import HospitalLoginComponent from './components/HospitalLogin';
 
 const App=()=> {
 
@@ -36,7 +38,10 @@ const App=()=> {
                     <Route path="/hospital/signup" element={<HospitalSignUpComponent/>}> </Route>
                     <Route path="/admin/login" element={<AdminLoginComponent/>}> </Route>
                     <Route path="/patient/login" element={<PatientLoginComponent/>}> </Route>
-                    <Route path="/patient/bookAppointment" element={<BookAppointmentComponent/>}> </Route>
+                    <Route path="/patient/bookBySpecial" element={<BookAppointmentComponent/>}> </Route>
+                    <Route path="/patient/bookByHosp" element={<SearchByHospitalComponent/>}> </Route>
+                    <Route path="/hospital/login" element={<HospitalLoginComponent/>}> </Route>
+
                 </Routes>
               </div>
         </div>

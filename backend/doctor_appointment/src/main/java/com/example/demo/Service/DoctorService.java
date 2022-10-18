@@ -1,6 +1,8 @@
 package com.example.demo.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Repository.DoctorRepository;
@@ -12,12 +14,14 @@ import java.util.List;
 @Service
 public class DoctorService {
 	
-	
+	PasswordEncoder passwordencoder=new BCryptPasswordEncoder();
 	
 	@Autowired
 	private DoctorRepository doctorrepo;
 	
 	public Doctor addDoctor(Doctor doctor) {
+		String Encrypted_pswd=passwordencoder.encode(doctor.getPassword());
+		doctor.setPassword(Encrypted_pswd);
 		int a=doctor.getStart_time();
 		int b=doctor.getEnd_time();
 		for(int i=a;i<b;i++) {
@@ -96,7 +100,7 @@ public class DoctorService {
 		
 		String pass=doctorrepo.getByUsername(user);
 		
-		if(pass.equals(login.getPassword())) {
+		if(passwordencoder.matches(login.getPassword(), pass)) {
 			return "Login Successful";
 		}
 		else {

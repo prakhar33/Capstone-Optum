@@ -16,7 +16,7 @@ import com.example.demo.model.Patient;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 	
-	@Query("SELECT p.password from Patient p WHERE p.name =:n")
+	@Query("SELECT p.password from Patient p WHERE p.mobileNumber =:n")
 	public String getByUsername(@Param("n") String name);
 	
 	@Modifying
