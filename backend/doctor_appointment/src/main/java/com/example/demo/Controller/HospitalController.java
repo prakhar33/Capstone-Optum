@@ -16,6 +16,7 @@ import com.example.demo.Service.AppointmentService;
 import com.example.demo.Service.DoctorService;
 import com.example.demo.Service.HospitalService;
 import com.example.demo.model.Hospital;
+import com.example.demo.model.Login;
 
 @CrossOrigin
 @RestController
@@ -37,6 +38,11 @@ public class HospitalController {
 		return hospitalservice.addHospital(hospital);
 	}
 	
+	@PostMapping("/login")
+	public String loginHosp(@RequestBody Login login) {
+		return hospitalservice.HospitalLogin(login);
+	}
+	
 	@DeleteMapping("/deleteDoctor")
 	public int deletePatient(@RequestBody String name) {
 		return doctorservice.removeDoctor(name);
@@ -50,6 +56,11 @@ public class HospitalController {
 	public  void deleteHAppointments(@PathVariable("hid") long hid){
 	    this.appointmentService.deleteHAppointments(hid);
 	    return;
+	}
+	
+	@GetMapping("/getAll")
+	public List<Hospital> getAllHosp(){
+		return hospitalservice.getAllHospitals();
 	}
 	
 	

@@ -47,7 +47,7 @@ const PatientSignUpComponent=()=>{
         else{
 
         const axios = require('axios').default;
-        axios.post('http://127.0.0.1:9090/patient/signup', {
+        axios.post('http://localhost:9090/patient/signup', {
         name: name,
         gender: gender,
         bloodGroup: bloodGroup,

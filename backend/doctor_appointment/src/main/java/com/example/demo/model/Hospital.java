@@ -13,17 +13,26 @@ public class Hospital {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long hospital_id;
 	private String hospital_name;
+	private String mobileNumber;
+	
 	private String city;
 	private String password;
 	
 	public Hospital() {
 		
 	}
-	public Hospital(String hospital_name, String city, String password) {
+	public Hospital(String hospital_name, String city, String password,String mobileNumber) {
 		super();
 		this.hospital_name = hospital_name;
 		this.city = city;
 		this.password = password;
+		this.mobileNumber=mobileNumber;
+	}
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
 	public long getHospital_id() {
 		return hospital_id;

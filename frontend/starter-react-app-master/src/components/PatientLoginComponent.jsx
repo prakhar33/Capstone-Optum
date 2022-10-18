@@ -19,12 +19,17 @@ const PatientLoginComponent=()=>{
     const handleSubmit=(e)=> {
         
         const axios = require('axios').default;
-        axios.post('http://127.0.0.1:8080/patient/login', {
-            mobileNumber: mobileNumber,
+        axios.post('http://localhost:9090/patient/login', {
+            username: mobileNumber,
             password: password
       })
       .then((res) => {
           console.log(res.data);
+          if(res.data==="Login Successful"){
+            localStorage.setItem("Plogin",1);
+            localStorage.setItem("Pid",mobileNumber);
+            navigate("/patient/bookByHosp");
+          }
       })
       .catch((err) => {
           console.log(err);
