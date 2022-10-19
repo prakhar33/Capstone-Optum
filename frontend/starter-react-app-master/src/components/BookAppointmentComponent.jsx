@@ -2,6 +2,7 @@ import React,{useEffect, useState} from "react";
 import { ReactDOM } from "react";
 import axios from "axios";
 import {Navigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import AdminLoginComponent from "./AdminLoginComponent";
 import {BrowserRouter as Router, Route, Routes, Switch} from 'react-router-dom'
 import DatePicker from "react-datepicker";
@@ -269,6 +270,7 @@ const BookAppointmentComponent=()=>{
          }
        }
     // const navigate=useNavigate();
+    
     const handleSubmit=(e)=> {
         e.preventDefault();
         //setFlag(true);

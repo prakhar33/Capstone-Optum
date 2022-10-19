@@ -2,8 +2,11 @@ import React,{useState} from "react";
 import axios from "axios";
 import signupimage from '../images/patient_signup.png'
 import {useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import HomeHeader from '../components/HomeHeader'
 import Footer from '../components/Footer'
+=======
+>>>>>>> main
 const PatientSignUpComponent=()=>{
       const [name , setName] = useState('');
       const [gender , setgender] = useState('');
@@ -49,7 +52,11 @@ const PatientSignUpComponent=()=>{
         else{
 
         const axios = require('axios').default;
+<<<<<<< HEAD
         axios.post('http://localhost:9090/patient/signup', {
+=======
+        axios.post('http://127.0.0.1:9090/patient/signup', {
+>>>>>>> main
         name: name,
         gender: gender,
         bloodGroup: bloodGroup,
@@ -68,11 +75,16 @@ const PatientSignUpComponent=()=>{
         } 
     }
       return (
+<<<<<<< HEAD
 <center>
 <div className="fill-window bg-signup">
 <HomeHeader />
 <div id="formdiv">
 <form id="doctorRegistrationform" class="row row-cols-lg-12 g-3 align-items-center" style={{width:"40%",marginTop:"20px", backgroundColor:"black",borderRadius:"20px 0px 20px 0px", boxShadow:"8px 12px 10px 5px grey",padding:"8px",alignContent:"center"}}
+=======
+<div id="formdiv">
+<form id="doctorRegistrationform" class="row row-cols-lg-12 g-3 align-items-center" style={{width:"40%",marginTop: "100px",backgroundColor:"black",borderRadius:"20px 0px 20px 0px", boxShadow:"8px 12px 10px 5px grey",padding:"8px"}}
+>>>>>>> main
 onSubmit={(e)=>{handleSubmit(e)}}>
   <center>
     <div>
@@ -164,12 +176,17 @@ onSubmit={(e)=>{handleSubmit(e)}}>
 </div>
 </center>
 </form>
+<<<<<<< HEAD
 </div>
 <div className="my-footer">
   <Footer/>
 </div>
 </div>
 </center>
+=======
+
+</div>
+>>>>>>> main
       );
     
       }
