@@ -17,7 +17,19 @@ import Footer from './components/Footer';
 //import PatientDashboard from './components/PatientDashboard'
 import Home from './components/home';
 import HospitalLogin from './components/HospitalLogin';
-function App() {
+import HospitalLoginComponent from './components/HospitalLogin';
+
+
+
+const App=()=> {
+
+  const handleLogin=(pid)=>{
+    localStorage.setItem('Login','1');
+    localStorage.setItem('patient_id',pid);
+  }
+
+
+  
   return (
     <div>
       <Router>
@@ -31,7 +43,7 @@ function App() {
                     <Route path="/patient/signup" element={<PatientSignUpComponent/>}> </Route>
                     <Route path="/patient/login" element={<PatientLoginComponent/>}> </Route>
                     <Route path="/hospital/signup" element={<HospitalSignUpComponent/>}> </Route>
-                    <Route path="/hospital/login" element={<HospitalLogin/>}> </Route>
+                    {/* <Route path="/hospital/login" element={<HospitalLogin/>}> </Route> */}
                     <Route path="/admin/login" element={<AdminLoginComponent/>}> </Route>
                     <Route path="/patient/bookappointment" element={<BookAppointmentComponent/>}> </Route>
                     <Route path="/patient/bookbyhospital" element={<SearchByHospitalComponent/>}> </Route>
@@ -39,6 +51,9 @@ function App() {
                     <Route path="/home/corousel" element={<CorouselComponent/>}> </Route>
                     <Route path="/home/footer" element={<Footer/>}> </Route>
                     {/* <Route path="/patient/dashboard" element={<PatientDashboard/>}> </Route> */}
+                    <Route path="/patient/bookBySpecial" element={<BookAppointmentComponent/>}> </Route>
+                    <Route path="/hospital/login" element={<HospitalLoginComponent/>}> </Route>
+
                 </Routes>
               </div>
         </div>
