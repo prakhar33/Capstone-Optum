@@ -2,18 +2,12 @@ import React,{useState} from "react";
 import axios from "axios";
 import signupimage from '../images/hospital_signup.png'
 import {useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
 import HomeHeader from "./HomeHeader";
 import Footer from "./Footer";
 const HospitalSignUpComponent=()=>{
       const [hospital_name , sethospitalname] = useState('');
       const [city , setcity] = useState('');
       const [mobileNumber , setmobileNumber] = useState('');
-=======
-const HospitalSignUpComponent=()=>{
-      const [hospital_name , sethospitalname] = useState('');
-      const [city , setcity] = useState('');
->>>>>>> main
       const [password , setpassword] = useState('');
       const [confirmpassword, setconfirmpassword] = useState('');
       //console.log(startTime);
@@ -24,12 +18,9 @@ const HospitalSignUpComponent=()=>{
     const handlecity=(e)=> {
         setcity(e.target.value)
     }
-<<<<<<< HEAD
     const handlemobileNumber=(e)=> {
       setmobileNumber(e.target.value)
   }
-=======
->>>>>>> main
     const handlepassword=(e)=> {
         setpassword(e.target.value)
     }
@@ -50,10 +41,7 @@ const HospitalSignUpComponent=()=>{
         axios.post('http://127.0.0.1:9090/hospital/signup', {
         hospital_name: hospital_name,
         city: city,
-<<<<<<< HEAD
         mobileNumber: mobileNumber,
-=======
->>>>>>> main
         password: password
       })
       .then((res) => {
@@ -66,12 +54,9 @@ const HospitalSignUpComponent=()=>{
         } 
     }
       return (
-<<<<<<< HEAD
 <center>
 <div className="fill-window bg-signup">
 <HomeHeader />
-=======
->>>>>>> main
 <div id="formdiv">
 <form id="doctorRegistrationform" class="row row-cols-lg-12 g-3 align-items-center" style={{width:"40%",marginTop: "100px",backgroundColor:"black",borderRadius:"20px 0px 20px 0px", boxShadow:"8px 12px 10px 5px grey",padding:"8px"}}
 onSubmit={(e)=>{handleSubmit(e)}}>
@@ -98,7 +83,6 @@ onSubmit={(e)=>{handleSubmit(e)}}>
   </div>
 
   <div class="col-12">
-<<<<<<< HEAD
     <label class="visually-hidden" for="inlineFormInputGroupUsername">Mobile Number</label>
     <div class="input-group">
       <div class="input-group-text"><i class="fa fa-mobile"></i> </div>
@@ -107,8 +91,6 @@ onSubmit={(e)=>{handleSubmit(e)}}>
   </div>
 
   <div class="col-12">
-=======
->>>>>>> main
     <label class="visually-hidden" for="inlineFormInputGroupUsername">Password</label>
     <div class="input-group">
       <div class="input-group-text"><i class="fa fa-key"></i> </div>
@@ -136,17 +118,12 @@ onSubmit={(e)=>{handleSubmit(e)}}>
 </div>
 </center>
 </form>
-<<<<<<< HEAD
 </div>
 <div className="my-footer">
   <Footer/>
 </div>
 </div>
 </center>
-=======
-
-</div>
->>>>>>> main
       );
     
       }

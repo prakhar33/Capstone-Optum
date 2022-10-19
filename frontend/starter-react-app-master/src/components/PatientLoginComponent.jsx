@@ -2,11 +2,8 @@ import React,{useState} from "react";
 import axios from "axios";
 import signupimage from '../images/patient_signup.png'
 import {useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
 import HomeHeader from '../components/HomeHeader'
 import Footer from '../components/Footer'
-=======
->>>>>>> main
 const PatientLoginComponent=()=>{
       const [mobileNumber , setmcimobileNumber] = useState('');
       const [password , setpassword] = useState('');
@@ -24,25 +21,17 @@ const PatientLoginComponent=()=>{
     const handleSubmit=(e)=> {
         
         const axios = require('axios').default;
-<<<<<<< HEAD
         axios.post('http://localhost:9090/patient/login', {
             username: mobileNumber,
-=======
-        axios.post('http://127.0.0.1:8080/patient/login', {
-            mobileNumber: mobileNumber,
->>>>>>> main
             password: password
       })
       .then((res) => {
           console.log(res.data);
-<<<<<<< HEAD
           if(res.data==="Login Successful"){
             localStorage.setItem("Plogin",1);
             localStorage.setItem("Pid",mobileNumber);
             navigate("/patient/bookByHosp");
           }
-=======
->>>>>>> main
       })
       .catch((err) => {
           console.log(err);
@@ -52,17 +41,11 @@ const PatientLoginComponent=()=>{
     }
 
       return (
-<<<<<<< HEAD
 <center>
 <div className="fill-window bg-login">
 <HomeHeader />
 <div id="formdiv">
 <form id="doctorRegistrationform" class="row row-cols-lg-12 g-3 align-items-center my-login-form" onSubmit={(e)=>{handleSubmit(e)}}>
-=======
-<div id="formdiv">
-<form id="doctorRegistrationform" class="row row-cols-lg-12 g-3 align-items-center" style={{width:"40%",marginTop: "100px",backgroundColor:"black",borderRadius:"20px 0px 20px 0px", boxShadow:"8px 12px 10px 5px grey",padding:"8px"}}
-onSubmit={(e)=>{handleSubmit(e)}}>
->>>>>>> main
   <center>
     <div>
      <h1 style={{color:"white"}}>Login</h1>
@@ -100,17 +83,12 @@ onSubmit={(e)=>{handleSubmit(e)}}>
 </div>
 </center>
 </form>
-<<<<<<< HEAD
 </div>
 <div className="my-footer">
   <Footer/>
 </div>
 </div>
 </center>
-=======
-
-</div>
->>>>>>> main
       );
     
       }
