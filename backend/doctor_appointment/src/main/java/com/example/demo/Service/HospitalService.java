@@ -41,4 +41,8 @@ public class HospitalService {
 			return "Login failed";
 		}
 	}
+
+	public void removeHsptl(long hospital_id){
+		hospitalrepo.deleteHsptlById(hospital_id);
+	}
 }

@@ -12,8 +12,8 @@ public class AppointmentService {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
-    public List<String> viewHAppointments(int hid){
-         return this.appointmentRepository.viewByHId(hid);
+    public List<String> viewHAppointments(String hname){
+         return this.appointmentRepository.viewByHId(hname);
     }
 
 

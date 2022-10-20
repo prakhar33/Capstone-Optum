@@ -20,7 +20,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 	@Modifying
 	@Transactional
 	@Query("DELETE from Doctor WHERE name =:m")
-	public int deleteByName(@Param("m") String name);
+	public void deleteByName(@Param("m") String name);
 	
 
 	@Query(value="SELECT * FROM Doctor  WHERE specialization =:m",nativeQuery=true)
@@ -29,7 +29,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 	@Query(value="SELECT * FROM Doctor  WHERE hospital_name =:m",nativeQuery=true)
 	public List<Doctor> searchByHosp(@Param("m") String hosp);
 	
-	@Query(value="SELECT d.name,h.city FROM Doctor d, Hospital h WHERE d.hospitalame=h.hospital_name AND d.name= :m",nativeQuery=true)
+	@Query(value="SELECT d.name,h.city FROM Doctor d, Hospital h WHERE d.hospitalName=h.hospital_name AND d.name= :m",nativeQuery=true)
 	public String getCity(@Param("m") String name);
 	
 	

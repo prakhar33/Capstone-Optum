@@ -2,6 +2,9 @@ package com.example.demo.Controller;
 
 import java.util.List;
 
+import com.example.demo.Service.PatientService;
+import com.example.demo.model.Doctor;
+import com.example.demo.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,14 +46,14 @@ public class HospitalController {
 		return hospitalservice.HospitalLogin(login);
 	}
 	
-	@DeleteMapping("/deleteDoctor")
-	public int deletePatient(@RequestBody String name) {
-		return doctorservice.removeDoctor(name);
+	@DeleteMapping("/deleteDoctor/{name}")
+	public void deleteDoctor(@PathVariable("name") String name) {
+		 doctorservice.removeDoctor(name);
 	}
 	
-	@GetMapping({"/viewapps/{hid}"})
-	public List<String> viewHAppointments(@PathVariable("hid") int hid){
-	    return this.appointmentService.viewHAppointments(hid);
+	@GetMapping({"/viewapps/{hname}"})
+	public List<String> viewHAppointments(@PathVariable("hname") String hname){
+	    return this.appointmentService.viewHAppointments(hname);
 	}
 	@DeleteMapping({"/delete/{hid}"})
 	public  void deleteHAppointments(@PathVariable("hid") long hid){
@@ -62,6 +65,15 @@ public class HospitalController {
 	public List<Hospital> getAllHosp(){
 		return hospitalservice.getAllHospitals();
 	}
-	
+
+	@GetMapping("/viewPatients/{hname}")
+	public List<String> viewPatientunderHptl(@PathVariable("hname") String name){
+		return appointmentService.viewHAppointments(name);
+	}
+
+	@GetMapping("/viewDocByHsptl/{name}")
+	public List<Doctor> viewDocByHsptl(@PathVariable("name") String name){
+		return doctorservice.SearchByHosp(name);
+	}
 	
 }

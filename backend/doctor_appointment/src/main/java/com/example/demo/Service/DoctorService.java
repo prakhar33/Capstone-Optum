@@ -108,8 +108,8 @@ public class DoctorService {
 		}
 	}
 	
-	public int removeDoctor(String name) {
-		return doctorrepo.deleteByName(name);
+	public void removeDoctor(String name) {
+		doctorrepo.deleteByName(name);
 	}
 	
 	public List<Doctor> SearchBySpecial(String special){
