@@ -107,7 +107,9 @@ public class DoctorService {
 			return "Login failed";
 		}
 	}
-	
+	public Doctor getById(int id){
+		return doctorrepo.getByDocid(id);
+	}
 	public void removeDoctor(String name) {
 		doctorrepo.deleteByName(name);
 	}

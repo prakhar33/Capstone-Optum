@@ -23,6 +23,8 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 	@Transactional
 	@Query("DELETE from Patient WHERE name =:m")
 	public int deleteByName(@Param("m") String name);
-	
+
+	@Query("SELECT p.id from Patient p WHERE p.mobileNumber =:m")
+	String getBymobileNumber(@Param("m") String name);
 	
 }

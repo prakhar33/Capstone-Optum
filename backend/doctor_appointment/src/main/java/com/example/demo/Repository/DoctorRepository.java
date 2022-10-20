@@ -39,7 +39,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 //	public void editDocSlot(@Param("a") int docId, @Param("b")String slotname);
 	
 	
-//	@Query("SELECT d FROM Doctor d where d.doctor_id= :a")
-//	public Doctor getByDocid(@Param("a") int docId);
+	@Query("SELECT d FROM Doctor d where d.doctor_id= :a")
+	public Doctor getByDocid(@Param("a") int docId);
 //	
 }
