@@ -17,13 +17,13 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Integer
 
 
     @Query(
-            value = "SELECT a.appointment_id, a.patient_id, a.doctor_id, d.name, a.slot, a.city, a.date  FROM Appointment a JOIN Doctor d ON a.doctor_id = d.doctor_id WHERE a.hospital_id = :m" ,
+            value = "SELECT a.appointment_id, a.patient_id, a.doctor_id, d.name, a.slot, a.city, a.date  FROM Appointment a JOIN Doctor d ON a.doctor_id = d.doctor_id WHERE a.hospital_name = :m" ,
             nativeQuery = true
     )
-    List<String> viewByHId(@Param("m") int hid);
+    List<String> viewByHId(@Param("m") String name);
 
     @Query(
-            value = "SELECT a.appointment_id, a.hospital_id, a.hospital_name, a.doctor_id, d.name, a.slot, a.city, a.date FROM Appointment a JOIN Doctor d ON a.doctor_id = d.doctor_id WHERE a.patient_id = :m",
+            value = "SELECT a.appointment_id,  a.hospital_name, a.doctor_id, d.name, a.slot, a.city, a.date FROM Appointment a JOIN Doctor d ON a.doctor_id = d.doctor_id WHERE a.patient_id = :m",
             nativeQuery = true
     )
     List<String> viewByPId(@Param("m") int pid);
