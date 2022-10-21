@@ -12,13 +12,11 @@ public class AppointmentService {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
-<<<<<<< HEAD
     public List<Appointment> viewHAppointments(String hname){
         return this.appointmentRepository.viewByHId(hname);
-=======
+
     public List<String> viewHAppointments(int hid){
          return this.appointmentRepository.viewByHId(hid);
->>>>>>> parent of 416d8ad (added admin API)
     }
 
 
