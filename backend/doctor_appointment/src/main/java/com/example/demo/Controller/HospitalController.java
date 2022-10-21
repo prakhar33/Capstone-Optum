@@ -2,8 +2,11 @@ package com.example.demo.Controller;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import com.example.demo.Service.PatientService;
 import com.example.demo.model.*;
+=======
+>>>>>>> parent of 416d8ad (added admin API)
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,14 +46,20 @@ public class HospitalController {
 		return hospitalservice.HospitalLogin(login);
 	}
 	
-	@DeleteMapping("/deleteDoctor/{name}")
-	public void deleteDoctor(@PathVariable("name") String name) {
-		 doctorservice.removeDoctor(name);
+	@DeleteMapping("/deleteDoctor")
+	public int deletePatient(@RequestBody String name) {
+		return doctorservice.removeDoctor(name);
 	}
 	
+<<<<<<< HEAD
 	@GetMapping({"/viewapps/{hname}"})
 	public List<Appointment> viewHAppointments(@PathVariable("hname") String hname){
 	    return this.appointmentService.viewHAppointments(hname);
+=======
+	@GetMapping({"/viewapps/{hid}"})
+	public List<String> viewHAppointments(@PathVariable("hid") int hid){
+	    return this.appointmentService.viewHAppointments(hid);
+>>>>>>> parent of 416d8ad (added admin API)
 	}
 	@DeleteMapping({"/delete/{hid}"})
 	public  void deleteHAppointments(@PathVariable("hid") long hid){
@@ -62,6 +71,7 @@ public class HospitalController {
 	public List<Hospital> getAllHosp(){
 		return hospitalservice.getAllHospitals();
 	}
+<<<<<<< HEAD
 
 	@GetMapping("/viewPatients/{hname}")
 	public List<Appointment> viewPatientunderHptl(@PathVariable("hname") String name){
@@ -72,5 +82,8 @@ public class HospitalController {
 	public List<Doctor> viewDocByHsptl(@PathVariable("name") String name){
 		return doctorservice.SearchByHosp(name);
 	}
+=======
+	
+>>>>>>> parent of 416d8ad (added admin API)
 	
 }
