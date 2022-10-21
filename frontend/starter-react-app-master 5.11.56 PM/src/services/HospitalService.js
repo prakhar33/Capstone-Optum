@@ -1,0 +1,9 @@
+import axios from "axios"
+
+const HOSPITAL_BASE_URL="http://localhost:9090/hospital";
+class HospitalService{
+    getHospitalByName(name){
+        return axios.get(HOSPITAL_BASE_URL+"/viewapps/"+name);
+    }
+}
+export default new HospitalService()
