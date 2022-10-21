@@ -32,10 +32,15 @@ public class PatientService {
 	public String PatientLogin(Login login) {
 		
 		String user=login.getUsername();
+		
 		String pass=patientrepo.getByUsername(user);
-		String pid = patientrepo.getBymobileNumber(user);
-		System.out.println(pid);
-		return passwordencoder.matches(login.getPassword(), pass) ? pid: "Login failed";
+		
+		if(passwordencoder.matches(login.getPassword(), pass)) {
+			return "Login Successful";
+		}
+		else {
+			return "Login failed";
+		}
 	}
 	
 	public int removePatient(String name) {

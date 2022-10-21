@@ -17,27 +17,22 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Integer
 
 
     @Query(
-            value = "SELECT a.appointment_id, a.patient_id, a.doctor_id, d.name, a.slot, a.city, a.date  FROM Appointment a JOIN Doctor d ON a.doctor_id = d.doctor_id WHERE a.hospital_id = :m" ,
+            value = "SELECT a.appointment_id, a.patient_id, a.doctor_id, d.name, a.slot, a.city, a.date  FROM Appointment a JOIN Doctor d ON a.doctor_id = d.doctor_id WHERE a.hospital_name = :m" ,
             nativeQuery = true
     )
-    List<Appointment> viewByHId(@Param("m") String name);
+    List<String> viewByHId(@Param("m") String name);
 
     @Query(
             value = "SELECT a.appointment_id,  a.hospital_name, a.doctor_id, d.name, a.slot, a.city, a.date FROM Appointment a JOIN Doctor d ON a.doctor_id = d.doctor_id WHERE a.patient_id = :m",
-//            value = "SELECT a.appointment_id, a.hospital_name, a.doctor_id, d.name, a.slot, a.city, a.date FROM Appointment a, Doctor d WHERE a.doctor_id = d.doctor_id AND a.patient_id = :m",
-    List<String> viewByHId(@Param("m") int hid);
-
-    @Query(
-            value = "SELECT a.appointment_id, a.hospital_id, a.hospital_name, a.doctor_id, d.name, a.slot, a.city, a.date FROM Appointment a JOIN Doctor d ON a.doctor_id = d.doctor_id WHERE a.patient_id = :m",
             nativeQuery = true
     )
-    List<Object> viewByPId(@Param("m") int pid);
+    List<String> viewByPId(@Param("m") int pid);
 
     @Query(
-            value = "SELECT * FROM Appointment a WHERE a.doctor_id = :m",
+            value = "SELECT a.appointment_id, a.patient_id, a.slot, a.city, a.date FROM Appointment a WHERE a.doctor_id = :m",
             nativeQuery = true
     )
-    List<Appointment> viewByDId(@Param("m") int did);
+    List<String> viewByDId(@Param("m") int did);
 
     @Modifying
     @Transactional
@@ -65,8 +60,5 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Integer
     @Query("SELECT slot from Appointment where date=:d and doctor_id=:d_id")
     List<Integer> getslotsbydateforparticulardoctor(@Param("d") String date, @Param("d_id") int doctor_id);
 
-    @Modifying
-    @Transactional
-    @Query("UPDATE Appointment SET date=:date, slot=:slot WHERE appointment_id =:apptId")
-    void editApp(@Param("apptId") int pid, @Param("date") String date, @Param("slot") int slot);
+
 }

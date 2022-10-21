@@ -107,17 +107,9 @@ public class DoctorService {
 			return "Login failed";
 		}
 	}
-<<<<<<< HEAD
-	public Doctor getById(int id){
-		return doctorrepo.getByDocid(id);
-	}
+	
 	public void removeDoctor(String name) {
 		doctorrepo.deleteByName(name);
-=======
-	
-	public int removeDoctor(String name) {
-		return doctorrepo.deleteByName(name);
->>>>>>> parent of 416d8ad (added admin API)
 	}
 	
 	public List<Doctor> SearchBySpecial(String special){
