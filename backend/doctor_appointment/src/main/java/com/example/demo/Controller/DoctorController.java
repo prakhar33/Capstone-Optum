@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.model.Appointment;
 import com.example.demo.model.Doctor;
 import com.example.demo.model.Login;
 import com.example.demo.Service.AppointmentService;
@@ -50,14 +51,20 @@ public class DoctorController {
     public String getCity(@RequestBody String name) {
     	return doctorservice.getCity(name);
     }
+
+
     @GetMapping({"/viewapps/{did}"})
-    public List<String> viewDAppointments(@PathVariable("did") int did){
+    public List<Appointment> viewDAppointments(@PathVariable("did") int did){
         return this.appointmentService.viewDAppointments(did);
     }
     @DeleteMapping({"/delete/{did}"})
     public  void deleteDAppointments(@PathVariable("did") int did){
         this.appointmentService.deleteDAppointments(did);
         return;
+    }
+    @GetMapping("/getDocByID/{id}")
+    public Doctor getByID(@PathVariable("id") int id){
+        return doctorservice.getById(id);
     }
 
 }

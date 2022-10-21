@@ -12,16 +12,21 @@ public class AppointmentService {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
-    public List<String> viewHAppointments(String hname){
-         return this.appointmentRepository.viewByHId(hname);
+<<<<<<< HEAD
+    public List<Appointment> viewHAppointments(String hname){
+        return this.appointmentRepository.viewByHId(hname);
+=======
+    public List<String> viewHAppointments(int hid){
+         return this.appointmentRepository.viewByHId(hid);
+>>>>>>> parent of 416d8ad (added admin API)
     }
 
 
-    public List<String> viewPAppointments(int pid){
+    public List<Object> viewPAppointments(int pid){
         return this.appointmentRepository.viewByPId(pid);
     }
 
-    public List<String> viewDAppointments(int did){
+    public List<Appointment> viewDAppointments(int did){
         return this.appointmentRepository.viewByDId(did);
     }
 
@@ -47,5 +52,6 @@ public class AppointmentService {
     {
     	return appointmentRepository.getslotsbydateforparticulardoctor(date, doctor_id);
     }
+    public void editApps(Appointment app) { appointmentRepository.editApp(app.getAppointment_id(), app.getDate(), app.getSlot());}
 
 }

@@ -31,5 +31,4 @@ public class AppointmentController {
 	public List<Integer> getslotsbydate(@PathVariable("date") String date, @PathVariable("doctor_id") int doctor_id){
 		return appointmentService.getslotsbydateforparticulardoctor(date, doctor_id);
 	}
-
 }
