@@ -52,7 +52,7 @@ public class HospitalController {
 	}
 	
 	@GetMapping({"/viewapps/{hname}"})
-	public List<String> viewHAppointments(@PathVariable("hname") String hname){
+	public List<Object> viewHAppointments(@PathVariable("hname") String hname){
 	    return this.appointmentService.viewHAppointments(hname);
 	}
 	@DeleteMapping({"/delete/{hid}"})
@@ -67,7 +67,7 @@ public class HospitalController {
 	}
 
 	@GetMapping("/viewPatients/{hname}")
-	public List<String> viewPatientunderHptl(@PathVariable("hname") String name){
+	public List<Object> viewPatientunderHptl(@PathVariable("hname") String name){
 		return appointmentService.viewHAppointments(name);
 	}
 

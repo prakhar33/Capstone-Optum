@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const Patient_BASE_URL = "http://localhost:9090/patient/";
+const Patient_BASE_URL = "http://localhost:8080/patient/";
 
 class PatientService{
     getAllPatientAppts(id){
@@ -8,12 +8,12 @@ class PatientService{
     }
 
     getDocById(id){
-        return axios.get("http://localhost:9090/doctor/"+"getDocByID/"+id);
+        return axios.get("http://localhost:8080/doctor/"+"docByID/"+id);
     }
 
     getSlotsByDateAndId(id,date) {
         return axios.get(
-            'http://localhost:9090/appointment/getslotbydate/'+date+"/"+id
+            'http://localhost:8080/appointment/getslotbydate/'+date+"/"+id
             )
     }
 }

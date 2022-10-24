@@ -1,14 +1,7 @@
 package com.example.demo.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.model.Appointment;
 import com.example.demo.model.Login;
@@ -49,8 +42,9 @@ public class PatientController {
 	public String loginPatient(@RequestBody Login login) {
 		return patientservice.PatientLogin(login);
 	}
+
 	@GetMapping({"/viewapps/{pid}"})
-	public List<String> viewPAppointments(@PathVariable("pid") int pid){
+	public List<Object> viewPAppointments(@PathVariable("pid") int pid){
 	    return this.appointmentService.viewPAppointments(pid);
 	}
 	@PostMapping("/Book")
@@ -61,9 +55,20 @@ public class PatientController {
 		return this.appointmentService.addApps(app);
 	}
 
-	@DeleteMapping("/delete/{pid}")
-	public  void deletePAppointments(@PathVariable("pid") int pid){
-	     this.appointmentService.deletePAppointments(pid);
-	     return;
+//	@DeleteMapping("/delete/{pid}")
+//	public  void deletePAppointments(@PathVariable("pid") int pid){
+//	     this.appointmentService.deletePAppointments(pid);
+//	     return;
+//	}
+
+	@PutMapping({"/editAppt"})
+	public void editAppointments(@RequestBody Appointment app){
+		this.appointmentService.editApps(app);
+	}
+
+	@DeleteMapping({"/deleteAppt/{pid}"})
+	public void deletePAppointments(@PathVariable("pid") int pid){
+		this.appointmentService.deletePAppointments(pid);
+		return;
 	}
 }

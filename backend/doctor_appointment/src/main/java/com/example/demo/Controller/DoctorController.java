@@ -50,8 +50,9 @@ public class DoctorController {
     public String getCity(@RequestBody String name) {
     	return doctorservice.getCity(name);
     }
+
     @GetMapping({"/viewapps/{did}"})
-    public List<String> viewDAppointments(@PathVariable("did") int did){
+    public List<Object> viewDAppointments(@PathVariable("did") int did){
         return this.appointmentService.viewDAppointments(did);
     }
     @DeleteMapping({"/delete/{did}"})
@@ -59,5 +60,9 @@ public class DoctorController {
         this.appointmentService.deleteDAppointments(did);
         return;
     }
-
+    @CrossOrigin
+    @GetMapping({"/docByID/{did}"})
+    public Doctor getDocById(@PathVariable("did") int did){
+        return this.doctorservice.getById(did);
+    }
 }

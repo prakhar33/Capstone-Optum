@@ -19,4 +19,7 @@ public interface HospitalRepository extends JpaRepository<Hospital, Long>{
 	
 	@Query("SELECT d.password from Hospital d WHERE d.mobileNumber =:n")
 	String getByUsername(@Param("n") String name);
+
+	@Query("SELECT h.hospital_name from Hospital h WHERE h.mobileNumber =:m")
+	String getBymobileNumber(@Param("m") String name);
 }

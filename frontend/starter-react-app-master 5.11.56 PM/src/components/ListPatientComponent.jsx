@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component, useEffect, useState, useRef } from 'react';
 import PatientService from '../services/PatientService';
 import SlotToTime from '../services/SlotToTime';
 import AppointmentService from '../services/AppointmentService';
@@ -15,6 +15,9 @@ const ListPatientComponent = (props) => {
     const [selectedDoctorDetails, setSelectedDoctorDetails] = useState(null);
     const [selectedDateBoolean, setSelectedDateBoolean] = useState(false);
     const [setSlots, setSetSlots] = useState(false);
+    const [selectedButton, setSelectedButton] = useState('');
+    const oldButton = useRef('');
+    const oldButtonColor = useRef('');
 
     const handleDeleteAppt = (ApptId) => {
         AppointmentService.deletePatientAppt(ApptId)
@@ -98,8 +101,7 @@ const ListPatientComponent = (props) => {
     const appointmentOptions = () => {
         return (
             <div>
-                <DatePicker dateFormat="dd MMMM, yyyy" selected={selectedDate} placeholderText="Click to select a date" openToDate={new Date()} onChange={(date:Date) => {setSelectedDate(date); setSelectedDateBoolean(true); }}/>
-                
+                <DatePicker dateFormat="dd MMMM, yyyy" selected={selectedDate} minDate={(new Date()).setDate((new Date).getDate() + 1)} placeholderText="Click to select a date" openToDate={new Date()} onChange={(date:Date) => {setSelectedDate(date); setSelectedDateBoolean(true); }}/>
             </div>
         )
     }
@@ -176,7 +178,28 @@ const ListPatientComponent = (props) => {
          
      } 
 
-
+    useEffect(() => {
+         if(selectedButton!=='') {
+            // console.log(selectedButton);
+            oldButtonColor.current = document.getElementsByClassName(selectedButton)[0].style.backgroundColor;
+            // console.log(document.getElementsByClassName(selectedButton));
+            document.getElementsByClassName(selectedButton)[0].style.backgroundColor = "blue";
+            // console.log(document.getElementsByClassName(selectedButton)[0].style.backgroundColor);
+            if(oldButton.current!=='') {
+                document.getElementsByClassName(oldButton.current)[0].style.backgroundColor = oldButtonColor.current;
+            }
+            oldButton.current = selectedButton;
+         }
+        
+     }, [selectedButton])
+    
+     const handleButton = (buttonClassName) => {
+         setSelectedButton(buttonClassName);
+        //  console.log(document.getElementsByClassName(buttonClassName));
+         console.log(document.getElementsByClassName(buttonClassName)[0].style.backgroundColor);
+         
+        //  setSelectedButton(document.getElementsByClassName(buttonClassName));
+     }
 
 
 
@@ -189,34 +212,34 @@ const ListPatientComponent = (props) => {
                 <table className="table table-striped table-light">
                 <tbody >
                     {
-                            <table>
-                                <tr>
-                                    <td><button onClick={()=>setSelectedSlot("1")} style={{backgroundColor: selectedDoctorDetails.slot_1===0?"white": selectedDoctorDetails.slot_1===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_1===2 || selectedDoctorDetails.slot_1===0}>10AM -10:30AM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("2")} style={{backgroundColor: selectedDoctorDetails.slot_2===0?"white": selectedDoctorDetails.slot_2===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_2===2 || selectedDoctorDetails.slot_2===0} >10:30AM -11:00AM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("3")} style={{backgroundColor: selectedDoctorDetails.slot_3===0?"white": selectedDoctorDetails.slot_3===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_3===2 || selectedDoctorDetails.slot_3===0}>11AM -11:30AM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("4")} style={{backgroundColor: selectedDoctorDetails.slot_4===0?"white": selectedDoctorDetails.slot_4===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_4===2 || selectedDoctorDetails.slot_4===0}>11:30AM -12:00PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("5")} style={{backgroundColor: selectedDoctorDetails.slot_5===0?"white": selectedDoctorDetails.slot_5===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_5===2 || selectedDoctorDetails.slot_5===0}>12PM -12:30PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("6")} style={{backgroundColor: selectedDoctorDetails.slot_6===0?"white": selectedDoctorDetails.slot_6===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_6===2 || selectedDoctorDetails.slot_6===0}>12:30PM -01:00AM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("7")} style={{backgroundColor: selectedDoctorDetails.slot_7===0?"white": selectedDoctorDetails.slot_7===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_7===2 || selectedDoctorDetails.slot_7===0}>01:00PM -01:30PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("8")} style={{backgroundColor: selectedDoctorDetails.slot_8===0?"white": selectedDoctorDetails.slot_8===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_8===2 || selectedDoctorDetails.slot_8===0}>01:30PM -02:00PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("9")} style={{backgroundColor: selectedDoctorDetails.slot_9===0?"white": selectedDoctorDetails.slot_9===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_9===2 || selectedDoctorDetails.slot_9===0}>02:00PM -02:30PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("10")} style={{backgroundColor: selectedDoctorDetails.slot_10===0?"white": selectedDoctorDetails.slot_10===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_10===2 || selectedDoctorDetails.slot_10===0}>2:30PM -03:00PM</button></td>
-                            </tr>
-                            <br></br>
+                        <table>
                             <tr>
-                                    <td><button onClick={()=>setSelectedSlot("11")} style={{backgroundColor: selectedDoctorDetails.slot_11===0?"white": selectedDoctorDetails.slot_11===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_11===2 || selectedDoctorDetails.slot_11===0}>03:00PM -03:30PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("12")} style={{backgroundColor: selectedDoctorDetails.slot_12===0?"white": selectedDoctorDetails.slot_12===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_12===2 || selectedDoctorDetails.slot_12===0}>03:30PM -04:00PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("13")} style={{backgroundColor: selectedDoctorDetails.slot_13===0?"white": selectedDoctorDetails.slot_13===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_13===2 || selectedDoctorDetails.slot_13===0}>04:00PM -04:30PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("14")} style={{backgroundColor: selectedDoctorDetails.slot_14===0?"white": selectedDoctorDetails.slot_14===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_14===2 || selectedDoctorDetails.slot_14===0}>04:30PM -05:00PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("15")} style={{backgroundColor: selectedDoctorDetails.slot_15===0?"white": selectedDoctorDetails.slot_15===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_15===2 || selectedDoctorDetails.slot_15===0}>05:00PM -05:30PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("16")} style={{backgroundColor: selectedDoctorDetails.slot_16===0?"white": selectedDoctorDetails.slot_16===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_16===2 || selectedDoctorDetails.slot_16===0}>05:30PM -06:00PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("17")} style={{backgroundColor: selectedDoctorDetails.slot_17===0?"white": selectedDoctorDetails.slot_17===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_17===2 || selectedDoctorDetails.slot_17===0}>06:00PM -06:30PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("18")} style={{backgroundColor: selectedDoctorDetails.slot_18===0?"white": selectedDoctorDetails.slot_18===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_18===2 || selectedDoctorDetails.slot_18===0}>06:30PM -07:00PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("19")} style={{backgroundColor: selectedDoctorDetails.slot_19===0?"white": selectedDoctorDetails.slot_19===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_19===2 || selectedDoctorDetails.slot_19===0}>07:00PM -07:30PM</button></td>
-                                    <td><button onClick={()=>setSelectedSlot("20")} style={{backgroundColor: selectedDoctorDetails.slot_20===0?"white": selectedDoctorDetails.slot_20===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_20===2 || selectedDoctorDetails.slot_20===0}>07:30PM -08:00PM</button></td>
-                                </tr>
+                                <td><button className='button1' onClick={(e)=>{setSelectedSlot("1"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_1===0?"white": selectedDoctorDetails.slot_1===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_1===2 || selectedDoctorDetails.slot_1===0}>10AM -10:30AM</button></td>
+                                <td><button className='button2' onClick={(e)=>{setSelectedSlot("2"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_2===0?"white": selectedDoctorDetails.slot_2===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_2===2 || selectedDoctorDetails.slot_2===0} >10:30AM -11:00AM</button></td>
+                                <td><button className='button3' onClick={(e)=>{setSelectedSlot("3"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_3===0?"white": selectedDoctorDetails.slot_3===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_3===2 || selectedDoctorDetails.slot_3===0}>11AM -11:30AM</button></td>
+                                <td><button className='button4' onClick={(e)=>{setSelectedSlot("4"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_4===0?"white": selectedDoctorDetails.slot_4===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_4===2 || selectedDoctorDetails.slot_4===0}>11:30AM -12:00PM</button></td>
+                                <td><button className='button5' onClick={(e)=>{setSelectedSlot("5"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_5===0?"white": selectedDoctorDetails.slot_5===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_5===2 || selectedDoctorDetails.slot_5===0}>12PM -12:30PM</button></td>
+                                <td><button className='button6' onClick={(e)=>{setSelectedSlot("6"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_6===0?"white": selectedDoctorDetails.slot_6===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_6===2 || selectedDoctorDetails.slot_6===0}>12:30PM -01:00AM</button></td>
+                                <td><button className='button7' onClick={(e)=>{setSelectedSlot("7"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_7===0?"white": selectedDoctorDetails.slot_7===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_7===2 || selectedDoctorDetails.slot_7===0}>01:00PM -01:30PM</button></td>
+                                <td><button className='button8' onClick={(e)=>{setSelectedSlot("8"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_8===0?"white": selectedDoctorDetails.slot_8===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_8===2 || selectedDoctorDetails.slot_8===0}>01:30PM -02:00PM</button></td>
+                                <td><button className='button9' onClick={(e)=>{setSelectedSlot("9"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_9===0?"white": selectedDoctorDetails.slot_9===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_9===2 || selectedDoctorDetails.slot_9===0}>02:00PM -02:30PM</button></td>
+                                <td><button className='button10' onClick={(e)=>{setSelectedSlot("10"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_10===0?"white": selectedDoctorDetails.slot_10===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_10===2 || selectedDoctorDetails.slot_10===0}>2:30PM -03:00PM</button></td>
+                        </tr>
+                        <br></br>
+                        <tr>
+                                <td><button className='button11' onClick={(e)=>{setSelectedSlot("11"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_11===0?"white": selectedDoctorDetails.slot_11===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_11===2 || selectedDoctorDetails.slot_11===0}>03:00PM -03:30PM</button></td>
+                                <td><button className='button12' onClick={(e)=>{setSelectedSlot("12"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_12===0?"white": selectedDoctorDetails.slot_12===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_12===2 || selectedDoctorDetails.slot_12===0}>03:30PM -04:00PM</button></td>
+                                <td><button className='button13' onClick={(e)=>{setSelectedSlot("13"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_13===0?"white": selectedDoctorDetails.slot_13===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_13===2 || selectedDoctorDetails.slot_13===0}>04:00PM -04:30PM</button></td>
+                                <td><button className='button14' onClick={(e)=>{setSelectedSlot("14"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_14===0?"white": selectedDoctorDetails.slot_14===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_14===2 || selectedDoctorDetails.slot_14===0}>04:30PM -05:00PM</button></td>
+                                <td><button className='button15' onClick={(e)=>{setSelectedSlot("15"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_15===0?"white": selectedDoctorDetails.slot_15===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_15===2 || selectedDoctorDetails.slot_15===0}>05:00PM -05:30PM</button></td>
+                                <td><button className='button16' onClick={(e)=>{setSelectedSlot("16"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_16===0?"white": selectedDoctorDetails.slot_16===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_16===2 || selectedDoctorDetails.slot_16===0}>05:30PM -06:00PM</button></td>
+                                <td><button className='button17' onClick={(e)=>{setSelectedSlot("17"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_17===0?"white": selectedDoctorDetails.slot_17===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_17===2 || selectedDoctorDetails.slot_17===0}>06:00PM -06:30PM</button></td>
+                                <td><button className='button18' onClick={(e)=>{setSelectedSlot("18"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_18===0?"white": selectedDoctorDetails.slot_18===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_18===2 || selectedDoctorDetails.slot_18===0}>06:30PM -07:00PM</button></td>
+                                <td><button className='button19' onClick={(e)=>{setSelectedSlot("19"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_19===0?"white": selectedDoctorDetails.slot_19===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_19===2 || selectedDoctorDetails.slot_19===0}>07:00PM -07:30PM</button></td>
+                                <td><button className='button20' onClick={(e)=>{setSelectedSlot("20"); handleButton(e.target.classList[0])}} style={{backgroundColor: selectedDoctorDetails.slot_20===0?"white": selectedDoctorDetails.slot_20===1?"green":"red",}} disabled = {selectedDoctorDetails.slot_20===2 || selectedDoctorDetails.slot_20===0}>07:30PM -08:00PM</button></td>
+                            </tr>
 
-                            </table>
+                        </table>
                     }
                 </tbody>
                 </table>

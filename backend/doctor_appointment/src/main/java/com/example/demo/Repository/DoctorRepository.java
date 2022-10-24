@@ -31,7 +31,12 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 	
 	@Query(value="SELECT d.name,h.city FROM Doctor d, Hospital h WHERE d.hospitalName=h.hospital_name AND d.name= :m",nativeQuery=true)
 	public String getCity(@Param("m") String name);
-	
+
+	@Query(value="SELECT d.doctor_id from Doctor d WHERE d.mobile_number =:m", nativeQuery=true)
+	String getBymobileNumber(@Param("m") String name);
+
+	@Query(value ="SELECT * from Doctor d WHERE d.doctor_id =:n", nativeQuery = true)
+	List<Doctor> getById(@Param("n") int did);
 	
 //	@Modifying
 //	@Transactional

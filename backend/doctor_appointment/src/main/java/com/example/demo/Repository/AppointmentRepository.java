@@ -20,19 +20,19 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Integer
             value = "SELECT a.appointment_id, a.patient_id, a.doctor_id, d.name, a.slot, a.city, a.date  FROM Appointment a JOIN Doctor d ON a.doctor_id = d.doctor_id WHERE a.hospital_name = :m" ,
             nativeQuery = true
     )
-    List<String> viewByHId(@Param("m") String name);
+    List<Object> viewByHId(@Param("m") String name);
 
     @Query(
             value = "SELECT a.appointment_id,  a.hospital_name, a.doctor_id, d.name, a.slot, a.city, a.date FROM Appointment a JOIN Doctor d ON a.doctor_id = d.doctor_id WHERE a.patient_id = :m",
             nativeQuery = true
     )
-    List<String> viewByPId(@Param("m") int pid);
+    List<Object> viewByPId(@Param("m") int pid);
 
     @Query(
             value = "SELECT a.appointment_id, a.patient_id, a.slot, a.city, a.date FROM Appointment a WHERE a.doctor_id = :m",
             nativeQuery = true
     )
-    List<String> viewByDId(@Param("m") int did);
+    List<Object> viewByDId(@Param("m") int did);
 
     @Modifying
     @Transactional
@@ -41,7 +41,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Integer
 
     @Modifying
     @Transactional
-    @Query("DELETE from Appointment WHERE patient_id =:m")
+    @Query("DELETE from Appointment WHERE appointment_id =:m")
     void deleteByPId(@Param("m") int pid);
 
     @Modifying
@@ -59,6 +59,11 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Integer
     @Transactional
     @Query("SELECT slot from Appointment where date=:d and doctor_id=:d_id")
     List<Integer> getslotsbydateforparticulardoctor(@Param("d") String date, @Param("d_id") int doctor_id);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Appointment SET date=:date, slot=:slot WHERE appointment_id =:apptId")
+    void editApp(@Param("apptId") int pid, @Param("date") String date, @Param("slot") int slot);
 
 
 }

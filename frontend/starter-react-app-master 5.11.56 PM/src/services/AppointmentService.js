@@ -1,9 +1,9 @@
 import axios from "axios"
 
 // const DeleteDoctorAppointment_URL = "http://localhost:8080/doctor/deleteAppt/";
-const DeletePatientAppointment_URL = "http://localhost:9090/patient/deleteAppt/";
+const DeletePatientAppointment_URL = "http://localhost:8080/patient/deleteAppt/";
 // const EditDoctorAppointment_URL = "";
-const EditPatientAppointment_URL = "http://localhost:9090/patient/editAppt/";
+const EditPatientAppointment_URL = "http://localhost:8080/patient/editAppt/";
 
 class AppointmentService{
     deletePatientAppt(id){
