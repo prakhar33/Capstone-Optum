@@ -29,16 +29,15 @@ public class HospitalService {
 		return hospitalrepo.findAll();	}
 	
 	public String HospitalLogin(Login login) {
-		
+
 		String user=login.getUsername();
-		
 		String pass=hospitalrepo.getByUsername(user);
-		
-		if(passwordencoder.matches(login.getPassword(), pass)) {
-			return "Login Successful";
-		}
-		else {
-			return "Login failed";
-		}
+		String pid = hospitalrepo.getBymobileNumber(user);
+		System.out.println(pid);
+		return passwordencoder.matches(login.getPassword(), pass) ? pid: "Login failed";
+	}
+
+	public void removeHsptl(long hospital_id){
+		hospitalrepo.deleteHsptlById(hospital_id);
 	}
 }

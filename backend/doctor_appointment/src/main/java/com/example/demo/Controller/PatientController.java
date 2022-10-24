@@ -42,9 +42,9 @@ public class PatientController {
 	public String loginPatient(@RequestBody Login login) {
 		return patientservice.PatientLogin(login);
 	}
+
 	@GetMapping({"/viewapps/{pid}"})
 	public List<Object> viewPAppointments(@PathVariable("pid") int pid){
-		System.out.println(this.appointmentService.viewPAppointments(pid));
 	    return this.appointmentService.viewPAppointments(pid);
 	}
 	@PostMapping("/Book")
@@ -55,14 +55,20 @@ public class PatientController {
 		return this.appointmentService.addApps(app);
 	}
 
-	@DeleteMapping("/deleteAppt/{pid}")
-	public  void deletePAppointments(@PathVariable("pid") int pid){
-	     this.appointmentService.deletePAppointments(pid);
-	     return;
-	}
+//	@DeleteMapping("/delete/{pid}")
+//	public  void deletePAppointments(@PathVariable("pid") int pid){
+//	     this.appointmentService.deletePAppointments(pid);
+//	     return;
+//	}
+
 	@PutMapping({"/editAppt"})
 	public void editAppointments(@RequestBody Appointment app){
 		this.appointmentService.editApps(app);
 	}
 
+	@DeleteMapping({"/deleteAppt/{pid}"})
+	public void deletePAppointments(@PathVariable("pid") int pid){
+		this.appointmentService.deletePAppointments(pid);
+		return;
+	}
 }

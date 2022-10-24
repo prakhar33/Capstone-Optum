@@ -20,7 +20,7 @@ const DoctorLoginComponent=()=>{
     const handleSubmit=(e)=> {
       console.log(mciRegistrationNumber+password);
         const axios = require('axios').default;
-        axios.post('http://localhost:9090/doctor/login', {
+        axios.post('http://localhost:8080/doctor/login', {
             username: mciRegistrationNumber,
             password: password
       })

@@ -19,7 +19,7 @@ const PatientLoginComponent=()=>{
     const handleSubmit=(e)=> {
         console.log(mobileNumber+password);
         const axios = require('axios').default;
-        axios.post('http://localhost:9090/patient/login', {
+        axios.post('http://localhost:8080/patient/login', {
             username: mobileNumber,
             password: password
       })
