@@ -9,9 +9,10 @@ import HospitalSignUpComponent from './components/HospitalSignUpComponent';
 import PatientLoginComponent from './components/PatientLoginComponent';
 import AdminLoginComponent from './components/AdminLoginComponent';
 import BookAppointmentComponent from './components/BookAppointmentComponent';
-import ListPatientComponent from './components/ListPatientComponent';
+import ListPatientComponent from './components/ManagePatientAppt';
 import HospitalLoginComponent from './components/HospitalLoginComponent';
 import ListHospitalComponent from './components/ListHospitalComponent';
+import ManageAppointment from './components/ManageAppointmentComponent';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                     <Route path="/hospital/apptlist" element={<ListHospitalComponent/>}></Route>                    
                     <Route path="/admin/login" element={<AdminLoginComponent/>}> </Route>
                     <Route path="/patient/bookappointment" element={<BookAppointmentComponent/>}> </Route>
+                    <Route path="/patient/manageAppt" element={<ManageAppointment/>}> </Route>
                 </Routes>
               </div>
         </div>
