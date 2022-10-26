@@ -4,7 +4,7 @@ import SlotToTime from '../services/SlotToTime';
 import AppointmentService from '../services/AppointmentService';
 import DatePicker from "react-datepicker";
 
-const ManagePatientAppt = (props) => {
+const PresentPatientAppt = (props) => {
     const [patientAppts, setPatientAppts] = useState([]);
     const [editButton, setEditButton] = useState();
     // const [patientId, setPatientId] = useState('');
@@ -46,7 +46,7 @@ const ManagePatientAppt = (props) => {
                 var mydate = new Date(parts[2], parts[1] - 1, parts[0]); 
                 console.log("appt date", mydate);
                 console.log("current date",currentDate);
-                if(mydate>currentDate) {
+                if(mydate>=currentDate) {
                     temp.push(res.data[i]);
                 }
             }
@@ -314,4 +314,4 @@ const ManagePatientAppt = (props) => {
 
 }
 
-export default ManagePatientAppt;
+export default PresentPatientAppt;

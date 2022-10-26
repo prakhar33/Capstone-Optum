@@ -1,16 +1,25 @@
 import React, { Component, useEffect, useState, useRef } from 'react';
 import PatientService from '../services/PatientService';
 import SlotToTime from '../services/SlotToTime';
-import AppointmentService from '../services/AppointmentService';
-import DatePicker from "react-datepicker";
 
-const ViewPatientApp = (props) => {
+const PastPatientAppt = (props) => {
     const [patientAppts, setPatientAppts] = useState([]);
 
 
     useEffect(() => {
         PatientService.getAllPatientAppts(localStorage.getItem('patientId')).then((res) => {
-            setPatientAppts(res.data);
+            var temp = [];
+            for(let i=0; i<res.data.length;i++) {
+                var currentDate = new Date();
+                var parts =res.data[i][6].split('-');
+                var mydate = new Date(parts[2], parts[1] - 1, parts[0]); 
+                console.log("appt date", mydate);
+                console.log("current date",currentDate);
+                if(mydate<currentDate) {
+                    temp.push(res.data[i]);
+                }
+            }
+            setPatientAppts(temp);
         })
         .catch((err)=>{
             console.log(err);
@@ -55,4 +64,4 @@ const ViewPatientApp = (props) => {
 
 }
 
-export default ViewPatientApp;
+export default PastPatientAppt;

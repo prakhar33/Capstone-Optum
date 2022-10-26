@@ -1,7 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import ManagePatientAppt from './ManagePatientAppt';
-import ViewPatientApp from './ViewPatientAppt';
+import PresentPatientAppt from './PresentPatientAppt';
+import PastPatientAppt from './PastPatientAppt';
 
 const ManageAppointment = () => {
     return (
@@ -10,16 +10,17 @@ const ManageAppointment = () => {
             <div>
                 <Tabs>
                     <TabList>
-                        <Tab>View</Tab>
-                        <Tab>Manage</Tab>
+                        <Tab>Past</Tab>
+                        <Tab>Future</Tab>
 
                     </TabList>
 
                     <TabPanel>
-                        <ViewPatientApp></ViewPatientApp>
+                        <PastPatientAppt></PastPatientAppt>
+                        
                     </TabPanel>
                     <TabPanel>
-                        <ManagePatientAppt></ManagePatientAppt>
+                        <PresentPatientAppt></PresentPatientAppt>
                     </TabPanel>
 
                 </Tabs>
