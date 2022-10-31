@@ -50,4 +50,12 @@ public class AppointmentService {
 
     public void editApps(Appointment app) { appointmentRepository.editApp(app.getAppointment_id(), app.getDate(), app.getSlot());}
 
+    public List<Appointment> getAppsByDateforDoctor(int docId){
+        return appointmentRepository.getAppsByDateforDoctor(docId);
+    }
+
+    public void deletePAppts(int appId){
+        appointmentRepository.deletePAppts(appId);
+    }
+
 }

@@ -65,5 +65,14 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Integer
     @Query("UPDATE Appointment SET date=:date, slot=:slot WHERE appointment_id =:apptId")
     void editApp(@Param("apptId") int pid, @Param("date") String date, @Param("slot") int slot);
 
+    @Modifying
+    @Transactional
+    @Query(value = "SELECT * FROM Appointment a WHERE a.doctor_id =:m",nativeQuery=true)
+    List<Appointment> getAppsByDateforDoctor(@Param("m") int docId);
 
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Appointment a WHERE a.appointment_id =:m")
+    void deletePAppts(@Param("m") int appId);
 }

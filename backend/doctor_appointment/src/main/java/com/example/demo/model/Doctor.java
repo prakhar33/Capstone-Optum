@@ -169,6 +169,156 @@ public class Doctor {
 	public void setSlot_1(int slot_1) {
 		this.slot_1 = slot_1;
 	}
-	
 
+    public int getSlot_2() {
+        return slot_2;
+    }
+
+    public void setSlot_2(int slot_2) {
+        this.slot_2 = slot_2;
+    }
+
+    public int getSlot_3() {
+        return slot_3;
+    }
+
+    public void setSlot_3(int slot_3) {
+        this.slot_3 = slot_3;
+    }
+
+    public int getSlot_4() {
+        return slot_4;
+    }
+
+    public void setSlot_4(int slot_4) {
+        this.slot_4 = slot_4;
+    }
+
+    public int getSlot_5() {
+        return slot_5;
+    }
+
+    public void setSlot_5(int slot_5) {
+        this.slot_5 = slot_5;
+    }
+
+    public int getSlot_6() {
+        return slot_6;
+    }
+
+    public void setSlot_6(int slot_6) {
+        this.slot_6 = slot_6;
+    }
+
+    public int getSlot_7() {
+        return slot_7;
+    }
+
+    public void setSlot_7(int slot_7) {
+        this.slot_7 = slot_7;
+    }
+
+    public int getSlot_8() {
+        return slot_8;
+    }
+
+    public void setSlot_8(int slot_8) {
+        this.slot_8 = slot_8;
+    }
+
+    public int getSlot_9() {
+        return slot_9;
+    }
+
+    public void setSlot_9(int slot_9) {
+        this.slot_9 = slot_9;
+    }
+
+    public int getSlot_10() {
+        return slot_10;
+    }
+
+    public void setSlot_10(int slot_10) {
+        this.slot_10 = slot_10;
+    }
+
+    public int getSlot_11() {
+        return slot_11;
+    }
+
+    public void setSlot_11(int slot_11) {
+        this.slot_11 = slot_11;
+    }
+
+    public int getSlot_12() {
+        return slot_12;
+    }
+
+    public void setSlot_12(int slot_12) {
+        this.slot_12 = slot_12;
+    }
+
+    public int getSlot_13() {
+        return slot_13;
+    }
+
+    public void setSlot_13(int slot_13) {
+        this.slot_13 = slot_13;
+    }
+
+    public int getSlot_14() {
+        return slot_14;
+    }
+
+    public void setSlot_14(int slot_14) {
+        this.slot_14 = slot_14;
+    }
+
+    public int getSlot_15() {
+        return slot_15;
+    }
+
+    public void setSlot_15(int slot_15) {
+        this.slot_15 = slot_15;
+    }
+
+    public int getSlot_16() {
+        return slot_16;
+    }
+
+    public void setSlot_16(int slot_16) {
+        this.slot_16 = slot_16;
+    }
+
+    public int getSlot_17() {
+        return slot_17;
+    }
+
+    public void setSlot_17(int slot_17) {
+        this.slot_17 = slot_17;
+    }
+
+    public int getSlot_18() {
+        return slot_18;
+    }
+
+    public void setSlot_18(int slot_18) {
+        this.slot_18 = slot_18;
+    }
+
+    public int getSlot_19() {
+        return slot_19;
+    }
+
+    public void setSlot_19(int slot_19) {
+        this.slot_19 = slot_19;
+    }
+
+    public int getSlot_20() {
+        return slot_20;
+    }
+
+    public void setSlot_20(int slot_20) {
+        this.slot_20 = slot_20;
+    }
 }
