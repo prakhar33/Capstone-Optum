@@ -4,7 +4,7 @@ import SlotToTime from '../services/SlotToTime';
 import AppointmentService from '../services/AppointmentService';
 import DatePicker from "react-datepicker";
 
-const ListPatientComponent = (props) => {
+const PresentPatientAppt = (props) => {
     const [patientAppts, setPatientAppts] = useState([]);
     const [editButton, setEditButton] = useState();
     // const [patientId, setPatientId] = useState('');
@@ -24,7 +24,6 @@ const ListPatientComponent = (props) => {
         .then((res)=> {
             PatientService.getAllPatientAppts(localStorage.getItem('patientId')).then((res1) => {
                 setPatientAppts(res1.data);
-                console.log(res1.data);
             })
             .catch((err)=>{
                 console.log(err);
@@ -40,7 +39,18 @@ const ListPatientComponent = (props) => {
 
     useEffect(() => {
         PatientService.getAllPatientAppts(localStorage.getItem('patientId')).then((res) => {
-            setPatientAppts(res.data);
+            var temp = [];
+            for(let i=0; i<res.data.length;i++) {
+                var currentDate = new Date();
+                var parts =res.data[i][6].split('-');
+                var mydate = new Date(parts[2], parts[1] - 1, parts[0]); 
+                console.log("appt date", mydate);
+                console.log("current date",currentDate);
+                if(mydate>=currentDate) {
+                    temp.push(res.data[i]);
+                }
+            }
+            setPatientAppts(temp);
         })
         .catch((err)=>{
             console.log(err);
@@ -265,7 +275,7 @@ const ListPatientComponent = (props) => {
                         <th>End Time</th>
                         <th>Date</th>
                         <th>City</th>
-                        <th colspan="2" scope="colgroup">   Actions  </th>
+                        <th colSpan="2" scope="colgroup">   Actions  </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -304,4 +314,4 @@ const ListPatientComponent = (props) => {
 
 }
 
-export default ListPatientComponent;
+export default PresentPatientAppt;
