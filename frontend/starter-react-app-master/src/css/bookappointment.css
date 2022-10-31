@@ -1,0 +1,67 @@
+:root{
+    --mygreen: rgb(127, 202, 127);
+    --myred: #876363;
+    --myblue: rgb(97, 97, 203);
+    --mygrey:#ececed;
+}
+/* #d06767 */
+.my-form{
+    width:100%;
+    margin-top: 20px;
+    background-color:#ececed;
+    border-radius:5px;
+    border: 1px solid black;
+    box-shadow:2px 2px 4px 2px #243d56;
+    padding:8px;
+}
+/* #afc7df */
+.my-table{
+    border-radius:5px !important;
+    border: 2px solid black;
+    box-shadow:3px 3px 4px 2px #243d56;
+    border-color: green;
+    margin-top: -15px;
+}
+thead{
+    background-color: black;
+    color: white;
+    border-bottom: 3px solid rgb(167, 178, 51);
+}
+.my-button{
+    background-color: #243d56;
+    color: white;
+}
+.my-button:hover{
+    background-color: black;
+    color: white;
+    transform: scale(1.1);
+}
+/* .my-slot-table{
+    border: 5px solid red;
+} */
+.my-slot-table>tr>td>button{
+    background-color: #243d56;
+    border-radius: 10%;
+}
+.my-slot-table>tr{
+    background-color: #243d56;
+    border-radius: 30%;
+    border-bottom: 2px solid #f9f9fa;
+}
+.my-confirm-button{
+    background-color: #243d56;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    height: 60px;
+}
+.my-confirm-button:hover{
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+
+
