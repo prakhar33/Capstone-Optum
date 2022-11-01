@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Repository.DoctorRepository;
 import com.example.demo.model.Doctor;
 import com.example.demo.model.Login;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -121,6 +122,75 @@ public class DoctorService {
 
 	public Doctor getById(int did) { return this.doctorrepo.getById(did).get(0); }
 	
-
+	public Doctor changeAvailability(int docId, int startTime, int endTime){
+		Doctor doctor = doctorrepo.getDocById(docId);
+		doctor.setStart_time(startTime);
+		int a  = doctor.getStart_time();
+		doctor.setEnd_time(endTime);
+		int b = doctor.getEnd_time();
+		for(int i=a;i<b;i++) {
+			if (i == 1) {
+				doctor.slot_1 = 1;
+			}
+			if (i == 2) {
+				doctor.slot_2 = 1;
+			}
+			if (i == 3) {
+				doctor.slot_3 = 1;
+			}
+			if (i == 4) {
+				doctor.slot_4 = 1;
+			}
+			if (i == 5) {
+				doctor.slot_5 = 1;
+			}
+			if (i == 6) {
+				doctor.slot_6 = 1;
+			}
+			if (i == 7) {
+				doctor.slot_7 = 1;
+			}
+			if (i == 8) {
+				doctor.slot_8 = 1;
+			}
+			if (i == 9) {
+				doctor.slot_9 = 1;
+			}
+			if (i == 10) {
+				doctor.slot_10 = 1;
+			}
+			if (i == 11) {
+				doctor.slot_11 = 1;
+			}
+			if (i == 12) {
+				doctor.slot_12 = 1;
+			}
+			if (i == 13) {
+				doctor.slot_13 = 1;
+			}
+			if (i == 14) {
+				doctor.slot_14 = 1;
+			}
+			if (i == 15) {
+				doctor.slot_15 = 1;
+			}
+			if (i == 16) {
+				doctor.slot_16 = 1;
+			}
+			if (i == 17) {
+				doctor.slot_17 = 1;
+			}
+			if (i == 18) {
+				doctor.slot_18 = 1;
+			}
+			if (i == 19) {
+				doctor.slot_19 = 1;
+			}
+			if (i == 20) {
+				doctor.slot_20 = 1;
+			}
+		}
+		return doctor;
+	}
 	
 }

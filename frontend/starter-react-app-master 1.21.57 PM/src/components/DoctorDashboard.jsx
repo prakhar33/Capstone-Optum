@@ -42,11 +42,6 @@ const DoctorDashboard=()=>{
               <i class="fa fa-eye"></i><em>View Appointments</em>
            </a>
         </li>
-        {/* <li>
-           <a target="myframe" class="s-sidebar__nav-link" href="http://localhost:3000/doctor/manageappointments">
-              <i class="fa fa-cog"></i><em>Change Availability</em>
-           </a>
-        </li> */}
         <li>
            <a target="myframe" class="s-sidebar__nav-link" href="http://localhost:3000/doctor/manageappointments">
               <i class="fa fa-cog"></i><em>Change Availability</em>

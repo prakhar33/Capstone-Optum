@@ -1,21 +1,21 @@
 import React,{useState,useEffect} from "react";
 import {Navigate } from 'react-router-dom';
-import signupimage from '../images/doctor_signup.png'
+import signupimage from '../images/hospital_signup.png'
 import '../css/dashboard.css'
 import Footer from "./Footer";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/js/src/dropdown'
-const DoctorDashboard=()=>{
+const HospitalDashboard=()=>{
    function handleLogOut(){
-      console.log("in Doctor logout");
-      localStorage.removeItem("Dlogin");
-      localStorage.removeItem("Did");
+      console.log("in Hospital logout");
+      localStorage.removeItem("Hlogin");
+      localStorage.removeItem("Hid");
       window.location = "http://localhost:3000/";
    }
 
       return (
 <div>
-{localStorage.getItem("Dlogin")==='1' ?
+{localStorage.getItem("Hlogin")==='1' ?
 
 <div class="s-layout">
 {/* <!-- Sidebar --> */}
@@ -32,24 +32,24 @@ const DoctorDashboard=()=>{
         </li>
         <hr></hr>
         <li>
-           <a target="myframe" class="s-sidebar__nav-link" href="http://localhost:3000/doctor/profile">
+           <a target="myframe" class="s-sidebar__nav-link" href="http://localhost:3000/hospital/profile">
               <i class="fa fa-user"></i><em>My Profile</em>
            </a>
         </li>
       
         <li>
-           <a target="myframe" class="s-sidebar__nav-link" href="http://localhost:3000/doctor/viewappointments">
+           <a target="myframe" class="s-sidebar__nav-link" href="http://localhost:3000/hospital/viewappointments">
               <i class="fa fa-eye"></i><em>View Appointments</em>
            </a>
         </li>
-        {/* <li>
-           <a target="myframe" class="s-sidebar__nav-link" href="http://localhost:3000/doctor/manageappointments">
-              <i class="fa fa-cog"></i><em>Change Availability</em>
-           </a>
-        </li> */}
         <li>
-           <a target="myframe" class="s-sidebar__nav-link" href="http://localhost:3000/doctor/manageappointments">
-              <i class="fa fa-cog"></i><em>Change Availability</em>
+           <a target="myframe" class="s-sidebar__nav-link" href="http://localhost:3000/hospital/adddoctor">
+              <i class="fa fa-plus"></i><em>Add Doctor</em>
+           </a>
+        </li>
+        <li>
+           <a target="myframe" class="s-sidebar__nav-link" href="http://localhost:3000/hospital/managedoctors">
+              <i class="fa fa-cog"></i><em>Manage Doctors</em>
            </a>
         </li>
         <li>
@@ -65,18 +65,18 @@ const DoctorDashboard=()=>{
 {/* <!-- Content --> */}
 <main class="s-layout__content" >
   {/* <h1>Full View, Please!</h1> */}
-  <iframe src="http://localhost:3000/doctor/profile" name="myframe" width={"100%"} height={"100%"} style={{backgroundColor:"white",marginBottom: "70px"}}>
+  <iframe src="http://localhost:3000/hospital/profile" name="myframe" width={"100%"} height={"100%"} style={{backgroundColor:"white",marginBottom: "70px"}}>
   </iframe>
   <div className="my-footer">
   <Footer/>
 </div>
 </main>
-</div>:<Navigate replace to="/doctor/login"></Navigate>
+</div>:<Navigate replace to="/hospital/login"></Navigate>
 }
 </div>
 );
 }
-export default DoctorDashboard;
+export default HospitalDashboard;
 
 
 

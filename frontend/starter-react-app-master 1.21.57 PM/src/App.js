@@ -35,7 +35,6 @@ import DoctorProfile from './components/DoctorProfile';
 import HospitalProfile from './components/HospitalProfile';
 import AdminAddHospital from './components/AdminAddHospital';
 import AdminManageHospital from './components/AdminManageHospital';
-import PageNotFound from './components/PageNotFound';
 import DoctorManageAvailability from './components/DoctorManageAvailability';
 function App() {
   return (
@@ -81,7 +80,6 @@ function App() {
                     <Route path="/hospital/profile" element={<HospitalProfile/>}> </Route>
                     <Route path="/admin/addhospital" element={<AdminAddHospital/>}> </Route>
                     <Route path="/admin/managehospitals" element={<AdminManageHospital/>}> </Route>
-                    {/* <Route path="*" element={<PageNotFound />} /> */}
                 </Routes>
               </div>
         </div>

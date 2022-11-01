@@ -37,7 +37,9 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 
 	@Query(value ="SELECT * from Doctor d WHERE d.doctor_id =:n", nativeQuery = true)
 	List<Doctor> getById(@Param("n") int did);
-	
+
+	@Query(value ="SELECT * from Doctor d WHERE d.doctor_id =:n", nativeQuery = true)
+	Doctor getDocById(@Param("n") int did);
 //	@Modifying
 //	@Transactional
 //	@Query(value="UPDATE Doctor SET :b=2 WHERE doctor_id=:a ",nativeQuery=true)
