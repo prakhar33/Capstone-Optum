@@ -81,7 +81,6 @@ function App() {
                     <Route path="/hospital/profile" element={<HospitalProfile/>}> </Route>
                     <Route path="/admin/addhospital" element={<AdminAddHospital/>}> </Route>
                     <Route path="/admin/managehospitals" element={<AdminManageHospital/>}> </Route>
-                    {/* <Route path="*" element={<PageNotFound />} /> */}
                 </Routes>
               </div>
         </div>
