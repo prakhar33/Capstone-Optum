@@ -3,7 +3,7 @@ import axios from "axios";
 import adminimage from '../images/admin.png'
 import {useNavigate } from 'react-router-dom';
 import HomeHeader from "./HomeHeader";
-import Footer from "./Footer";
+import HomeFooter from "./HomeFooter";
 import swal from 'sweetalert';
 const AdminLoginComponent=()=>{
       const [username , setusername] = useState('');
@@ -84,7 +84,7 @@ const AdminLoginComponent=()=>{
 </form>
 </div>
 <div className="my-footer">
-  <Footer/>
+  <HomeFooter/>
 </div>
 </div>
 </center>

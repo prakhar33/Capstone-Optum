@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState, useRef } from 'react';
 import swal from 'sweetalert';
 import signupimage from '../images/doctor_signup.png'
 import HomeHeader from '../components/HomeHeader'
-import Footer from '../components/Footer'
+import HomeFooter from './HomeFooter'
 
 
 const DoctorManageAvailability=()=>{
@@ -186,7 +186,7 @@ const DoctorManageAvailability=()=>{
         </form>
         </div>
         <div className="my-footer">
-          <Footer/>
+          <HomeFooter/>
         </div>
         </div>
         </center>

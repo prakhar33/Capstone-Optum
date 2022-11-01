@@ -3,7 +3,7 @@ import axios from "axios";
 import signupimage from '../images/patient_signup.png'
 import {useNavigate } from 'react-router-dom';
 import HomeHeader from '../components/HomeHeader'
-import Footer from '../components/Footer'
+import HomeFooter from './HomeFooter'
 import swal from 'sweetalert';
 const PatientLoginComponent=()=>{
       const [mobileNumber , setmcimobileNumber] = useState('');
@@ -94,7 +94,7 @@ const PatientLoginComponent=()=>{
 </form>
 </div>
 <div className="my-footer">
-  <Footer/>
+  <HomeFooter/>
 </div>
 </div>
 </center>

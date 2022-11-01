@@ -3,7 +3,7 @@ import axios from "axios";
 import signupimage from '../images/doctor_signup.png'
 import {useNavigate } from 'react-router-dom';
 import HomeHeader from "./HomeHeader";
-import Footer from "./Footer";
+import HomeFooter from "./HomeFooter";
 import { Alert } from "react-bootstrap";
 import swal from 'sweetalert';
 const DoctorLoginComponent=(props)=>{
@@ -97,7 +97,7 @@ const DoctorLoginComponent=(props)=>{
 </form>
 </div>
 <div className="my-footer">
-  <Footer/>
+  <HomeFooter/>
 </div>
 </div>
 </center>

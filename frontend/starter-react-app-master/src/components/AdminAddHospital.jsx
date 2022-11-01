@@ -3,7 +3,7 @@ import axios from "axios";
 import signupimage from '../images/hospital_signup.png'
 import {useNavigate } from 'react-router-dom';
 import HomeHeader from "./HomeHeader";
-import Footer from "./Footer";
+import HomeFooter from "./HomeFooter";
 import {Navigate } from 'react-router-dom';
 import '../css/manage.css'
 import swal from 'sweetalert';

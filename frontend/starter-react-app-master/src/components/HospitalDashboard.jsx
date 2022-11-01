@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import {Navigate } from 'react-router-dom';
 import signupimage from '../images/hospital_signup.png'
 import '../css/dashboard.css'
-import Footer from "./Footer";
+import HomeFooter from "./HomeFooter";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/js/src/dropdown'
 const HospitalDashboard=()=>{
@@ -68,7 +68,7 @@ const HospitalDashboard=()=>{
   <iframe src="http://localhost:3000/hospital/profile" name="myframe" width={"100%"} height={"100%"} style={{backgroundColor:"white",marginBottom: "70px"}}>
   </iframe>
   <div className="my-footer">
-  <Footer/>
+  <HomeFooter/>
 </div>
 </main>
 </div>:<Navigate replace to="/hospital/login"></Navigate>

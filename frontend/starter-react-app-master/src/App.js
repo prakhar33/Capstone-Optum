@@ -12,7 +12,7 @@ import BookAppointmentComponent from './components/BookAppointmentComponent';
 import SearchByHospitalComponent from './components/SearchByHospitalComponent';
 import HomeHeader from './components/HomeHeader';
 import CorouselComponent from './components/CorouselComponent';
-import Footer from './components/Footer';
+import HomeFooter from './components/HomeFooter';
 import PatientDashboard from './components/PatientDashboard'
 import Home from './components/home';
 import HospitalLogin from './components/HospitalLogin';
@@ -35,7 +35,7 @@ import DoctorProfile from './components/DoctorProfile';
 import HospitalProfile from './components/HospitalProfile';
 import AdminAddHospital from './components/AdminAddHospital';
 import AdminManageHospital from './components/AdminManageHospital';
-import PageNotFound from './components/PageNotFound';
+// import PageNotFound from './components/PageNotFound';
 import DoctorManageAvailability from './components/DoctorManageAvailability';
 function App() {
   return (
@@ -57,7 +57,7 @@ function App() {
                     <Route path="/patient/bookbyhospital" element={<SearchByHospitalComponent/>}> </Route>
                     <Route path="/home/homeheader" element={<HomeHeader/>}> </Route>
                     <Route path="/home/corousel" element={<CorouselComponent/>}> </Route>
-                    <Route path="/home/footer" element={<Footer/>}> </Route>
+                    <Route path="/home/HomeFooter" element={<HomeFooter/>}> </Route>
                     <Route path="/patient/dashboard" element={<PatientDashboard/>}> </Route>
                     <Route path="/patient/profile" element={<PatientProfile/>}> </Route>
                     <Route path="/patient/viewappointments" element={<PatientViewAppointments/>}> </Route>

@@ -3,7 +3,7 @@ import axios from "axios";
 import signupimage from '../images/hospital_signup.png'
 import {useNavigate } from 'react-router-dom';
 import HomeHeader from "./HomeHeader";
-import Footer from "./Footer";
+import HomeFooter from "./HomeFooter";
 import swal from 'sweetalert';
 const HospitalSignUpComponent=()=>{
       const [hospital_name , sethospitalname] = useState('');
@@ -127,7 +127,7 @@ onSubmit={(e)=>{handleSubmit(e)}}>
 </form>
 </div>
 <div className="my-footer">
-  <Footer/>
+  <HomeFooter/>
 </div>
 </div>
 </center>
